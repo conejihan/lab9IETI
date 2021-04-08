@@ -59,8 +59,11 @@ public class Application implements CommandLineRunner {
         
         productRepository.findByDescriptionContaining("plus", PageRequest.of(0, 2)).stream()
         	.forEach(System.out::println);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        MongoOperations mongoOperation = (MongoOperations) applicationContext.getBean("mongoTemplate");
    
         System.out.println();
+
     }
 
 }
